@@ -32,7 +32,7 @@ app.on('window-all-closed', function() {
 app.on('ready', function() {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({width: 800, height: 600});
-	mainWindow.loadUrl('http://localhost:3040');
+	mainWindow.loadUrl('http://localhost:3040/login');
 
 	// Emitted when the window is closed.
 	mainWindow.on('closed', quit);
