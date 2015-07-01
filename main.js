@@ -6,11 +6,17 @@ var BrowserWindow = require('browser-window');
 var spawn = require('child_process').spawn;
 
 // Run process and log output
-var child = spawn('./converse');
+var child = spawn('./converse', ['--production']);
+
+// Set encodings
+child.stdout.setEncoding('utf8');
+child.stderr.setEncoding('utf8');
+
+// Log everytihng with the child process
 child.stdout.on('data', function(data) {
-	console.log(data);
+	console.log(data.toString());
 }); child.stderr.on('data', function(data) {
-	console.log(data);
+	console.log(data.toString());
 }); child.on('close', function(code) {
 	console.log('child process exited with code ' + code);
 });
@@ -32,7 +38,7 @@ app.on('window-all-closed', function() {
 app.on('ready', function() {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({width: 800, height: 600});
-	mainWindow.loadUrl('http://localhost:3040/login');
+	mainWindow.loadUrl('http://localhost:3040/');
 
 	// Emitted when the window is closed.
 	mainWindow.on('closed', quit);
