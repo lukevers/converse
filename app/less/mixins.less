@@ -1,0 +1,13 @@
+.buttonify(@c) {
+	background-color: @c;
+	cursor: pointer;
+
+	&:focus,
+	&:hover {
+		background-color: darken(@c, 2%);
+	}
+
+	&:active {
+		background-color: darken(@c, 3%);
+	}
+}

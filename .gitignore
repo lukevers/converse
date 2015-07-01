@@ -34,5 +34,5 @@ converse
 *.db
 
 # Compiled assets
-public/css/*.css
-public/js/*.js
+public/assets/css/*.css
+public/assets/js/*.js

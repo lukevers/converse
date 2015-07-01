@@ -2,12 +2,24 @@
 
 @import "variables";
 @import "fonts";
+@import "layout";
+@import "mixins";
 
 html,
 body {
-	background-color: @white;
-	color: @black;
+	background-color: @light;
+	color: @dark;
 	font-size: @base-font-size;
 	font-family: @base-font;
 	font-weight: 400;
+	height: 100%;
+	width: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+* {
+	box-sizing: border-box;
 }
