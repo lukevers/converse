@@ -44,6 +44,5 @@ func route() {
 }
 
 func addRoutes() {
-	router.GET("/init", routes.Init)
 	router.GET("/", routes.Index)
 }
