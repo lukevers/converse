@@ -11,7 +11,7 @@ gulp.task('less', function() {
 		.pipe(less())
 		.pipe(concat('theme.css'))
 		.pipe(minify())
-		.pipe(gulp.dest('./public/css'));
+		.pipe(gulp.dest('./public/assets/css'));
 });
 
 // CSS Task
@@ -24,7 +24,7 @@ gulp.task('css', function() {
 		].map(function(str) { return './bower_components/' + str }))
 		.pipe(concat('libraries.css'))
 		.pipe(minify())
-		.pipe(gulp.dest('./public/css'));
+		.pipe(gulp.dest('./public/assets/css'));
 });
 
 // JavaScript Task
@@ -42,7 +42,7 @@ gulp.task('js', function() {
 		].map(function(str) { return './assets/js/' + str })))
 		.pipe(concat('scripts.js'))
 		.pipe(uglify())
-		.pipe(gulp.dest('./public/js'));
+		.pipe(gulp.dest('./public/assets/js'));
 });
 
 // Watch Task

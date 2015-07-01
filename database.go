@@ -1,28 +1,26 @@
 package main
 
 import (
-	"database/sql"
-	"fmt"
+	"github.com/jmoiron/sqlx"
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/rubenv/sql-migrate"
-	"os"
+	"log"
 )
 
-var db *sql.DB
+var db *sqlx.DB
 
 func dbconnect() {
 	// Connect to database
-	db, err := sql.Open("sqlite3", *database)
+	var err error
+	db, err = sqlx.Open("sqlite3", *database)
 	if err != nil {
-		fmt.Printf("Error connecting to database: %s\n", err)
-		os.Exit(3)
+		log.Fatal("Error connecting to database: %s\n", err)
 	}
 
 	// Ping the database
 	err = db.Ping()
 	if err != nil {
-		fmt.Printf("Error pinging database: %s\n", err)
-		os.Exit(4)
+		log.Fatal("Error pinging database: %s\n", err)
 	}
 
 	// Setup migrations
@@ -31,15 +29,14 @@ func dbconnect() {
 	}
 
 	// Run migrations
-	n, err := migrate.Exec(db, "sqlite3", migrations, migrate.Up)
+	n, err := migrate.Exec(db.DB, "sqlite3", migrations, migrate.Up)
 	if err != nil {
-		fmt.Printf("Error running database migrations: %s\n", err)
-		os.Exit(5)
+		log.Fatal("Error running database migrations: %s\n", err)
 	} else {
 		if n == 0 {
-			fmt.Println("Nothing to migrate")
+			log.Println("Nothing to migrate")
 		} else {
-			fmt.Printf("Applied %d migrations\n", n)
+			log.Println("Applied %d migrations", n)
 		}
 	}
 }

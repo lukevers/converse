@@ -11,6 +11,9 @@ func main() {
 	// Setup database
 	dbconnect()
 
+	// Setup irc clients
+	setupirc()
+
 	// Setup router
 	route()
 }
