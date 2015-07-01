@@ -85,6 +85,28 @@
 			max-height: calc(~"100% - 70px");
 			position: absolute;
 			overflow: scroll;
+			padding-top: 5px;
+
+			.msg {
+				padding: 0 10px;
+
+				.time {
+					display: inline;
+					color: darken(@light, 15%);
+					padding-right: 5px;
+				}
+
+				.nickname {
+					display: inline;
+					font-weight: bold;
+					padding-right: 5px;
+				}
+
+				.message {
+					display: inline;
+					word-wrap: break-word;
+				}
+			}
 		}
 
 		.input {
