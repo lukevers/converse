@@ -42,6 +42,7 @@ func (c *Client) Connect() {
 
 	// Add event handlers
 	c.conn.AddCallback("001", c.HandleWelcome)
+	c.conn.AddCallback("PRIVMSG", c.HandleMessage)
 
 	// Stay connected
 	c.conn.Loop()
@@ -51,4 +52,12 @@ func (c *Client) Connect() {
 // handles the welcome event when connecting to an IRC server.
 func (c *Client) HandleWelcome(e *irc.Event) {
 	// TODO
+
+	c.conn.Join("#test")
+}
+
+// The exported func HandleMessage is an event handler for PRIVMSGs, which
+// include both private messages and messages in channels.
+func (c *Client) HandleMessage(e *irc.Event) {
+	fmt.Println(e)
 }
